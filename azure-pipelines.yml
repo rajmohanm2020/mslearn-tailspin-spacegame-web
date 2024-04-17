@@ -1,3 +1,13 @@
-pool: MyAgentPool
+# ASP.NET Core
+trigger:
+- main
+
+pool:
+ vmImage: ubuntu-latest
+
+variables:
+  buildconfiguration: 'Release'
+
 steps:
-- bash: echo hello world
+- script: dotnet build --configuration $(buildConfiguration)
+  displayname: 'dotnet build $(buildConfiguration)'
